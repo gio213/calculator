@@ -166,13 +166,13 @@ calcButton.forEach(function (button) {
   button.addEventListener("click", function () {
     console.log(button.textContent);
     var buttonValue = button.textContent;
-    isNumber(buttonValue);
+    calculate(buttonValue);
     return buttonValue;
   });
 });
 
 // calculate numbers
-var isNumber = function isNumber(buttonValue) {
+var calculate = function calculate(buttonValue) {
   switch (buttonValue) {
     case "AC":
       number = [];
