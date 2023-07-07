@@ -117,82 +117,107 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"index.js":[function(require,module,exports) {
-// import createCalcLayout from "./components/createCalcLayout";
+})({"components/createCalcLayout.js":[function(require,module,exports) {
+"use strict";
 
-// const app = document.querySelector(".app");
-// app.appendChild(createCalcLayout());
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+// create calculator layout
+var createCalcLayout = function createCalcLayout() {
+  var calcLayout = document.createElement("div");
+  calcLayout.classList.add("calc-layout");
+  var calcDisplay = document.createElement("div");
+  calcDisplay.classList.add("calcDisplay");
+  calcDisplay.textContent = "0";
+  calcLayout.appendChild(calcDisplay);
+  var calcButtons = document.createElement("div");
+  calcButtons.classList.add("calcButtons");
+  calcLayout.appendChild(calcButtons);
+  var buttons = ["AC", "DEL", "%", "/", "7", "8", "9", "x", "4", "5", "6", "-", "1", "2", "3", "+", "0", ".", "π", "="];
+  buttons.forEach(function (button) {
+    var calcButton = document.createElement("button");
+    calcButton.classList.add("calc-button");
+    calcButton.textContent = button;
+    calcButtons.appendChild(calcButton);
+  });
+  return calcLayout;
+};
+var _default = createCalcLayout;
+exports.default = _default;
+},{}],"index.js":[function(require,module,exports) {
+"use strict";
 
-// // get elements from returned layout
-// let number = [];
+var _createCalcLayout = _interopRequireDefault(require("./components/createCalcLayout"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var app = document.querySelector(".app");
+app.appendChild((0, _createCalcLayout.default)());
 
-// const calcDisplay = document.querySelector(".calcDisplay");
-// const calcButtons = document.querySelector(".calcButtons");
-// const calcButton = document.querySelectorAll(".calc-button");
+// get elements from returned layout
+var number = [];
+var calcDisplay = document.querySelector(".calcDisplay");
+var calcButtons = document.querySelector(".calcButtons");
+var calcButton = document.querySelectorAll(".calc-button");
 
-// // get buttons value
-// calcButton.forEach((button) => {
-//   console.log(button);
-//   button.addEventListener("click", () => {
-//     console.log(button.textContent);
-//     let buttonValue = button.textContent;
-//     isNumber(buttonValue);
-//     return buttonValue;
-//   });
-// });
+// get buttons value
+calcButton.forEach(function (button) {
+  console.log(button);
+  button.addEventListener("click", function () {
+    console.log(button.textContent);
+    var buttonValue = button.textContent;
+    isNumber(buttonValue);
+    return buttonValue;
+  });
+});
 
-// // calculate numbers
-// const isNumber = (buttonValue) => {
-//   switch (buttonValue) {
-//     case "AC":
-//       number = [];
-//       calcDisplay.textContent = "0";
-//       break;
-//     case "DEL":
-//       number.pop();
-//       calcDisplay.textContent = number.join("");
-//       break;
-//     case "%":
-//       number.push("%");
-//       calcDisplay.textContent = number.join("");
-//       break;
-//     case "/":
-//       number.push("/");
-//       calcDisplay.textContent = number.join("");
-//       break;
-//     case "x":
-//       number.push("*");
-//       calcDisplay.textContent = number.join("");
-//       break;
-//     case "-":
-//       number.push("-");
-//       calcDisplay.textContent = number.join("");
-//       break;
-//     case "+":
-//       number.push("+");
-//       calcDisplay.textContent = number.join("");
-//       break;
-//     case "=":
-//       let result = eval(number.join(""));
-//       calcDisplay.textContent = result;
-//       number = [];
-//       break;
-//     case "π":
-//       number.push(Math.PI);
-//       calcDisplay.textContent = number.join("");
-//       break;
-
-//     default:
-//       number.push(buttonValue);
-//       calcDisplay.textContent = number.join("");
-//       break;
-//   }
-// };
-
-var text = document.createElement("p");
-text.textContent = "Hello World";
-document.body.appendChild(text);
-},{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+// calculate numbers
+var isNumber = function isNumber(buttonValue) {
+  switch (buttonValue) {
+    case "AC":
+      number = [];
+      calcDisplay.textContent = "0";
+      break;
+    case "DEL":
+      number.pop();
+      calcDisplay.textContent = number.join("");
+      break;
+    case "%":
+      number.push("%");
+      calcDisplay.textContent = number.join("");
+      break;
+    case "/":
+      number.push("/");
+      calcDisplay.textContent = number.join("");
+      break;
+    case "x":
+      number.push("*");
+      calcDisplay.textContent = number.join("");
+      break;
+    case "-":
+      number.push("-");
+      calcDisplay.textContent = number.join("");
+      break;
+    case "+":
+      number.push("+");
+      calcDisplay.textContent = number.join("");
+      break;
+    case "=":
+      var result = eval(number.join(""));
+      calcDisplay.textContent = result;
+      number = [];
+      break;
+    case "π":
+      number.push(Math.PI);
+      calcDisplay.textContent = number.join("");
+      break;
+    default:
+      number.push(buttonValue);
+      calcDisplay.textContent = number.join("");
+      break;
+  }
+};
+},{"./components/createCalcLayout":"components/createCalcLayout.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
