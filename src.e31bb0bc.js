@@ -135,7 +135,7 @@ var createCalcLayout = function createCalcLayout() {
   var calcButtons = document.createElement("div");
   calcButtons.classList.add("calcButtons");
   calcLayout.appendChild(calcButtons);
-  var buttons = ["AC", "DEL", "%", "/", "7", "8", "9", "x", "4", "5", "6", "-", "1", "2", "3", "+", "0", ".", "=", "π"];
+  var buttons = ["AC", "DEL", "%", "/", "7", "8", "9", "x", "4", "5", "6", "-", "1", "2", "3", "+", "0", ".", "π", "="];
   buttons.forEach(function (button) {
     var calcButton = document.createElement("button");
     calcButton.classList.add("calc-button");
@@ -242,7 +242,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40407" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45449" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
